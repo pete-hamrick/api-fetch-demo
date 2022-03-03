@@ -6,5 +6,7 @@ export async function getPokedex() {
 
     const jsonResponse = await response.json();
 
-    return json.results;
+    return jsonResponse.results;
 }
+
+// TODO write star wars fetch function

@@ -12,7 +12,7 @@ async function loadPokedex() {
     list.classList.add('pokemon');
 
     for (let pokemon of pokedex) {
-        const clone = template.textContent.cloneNode(true);
+        const clone = template.content.cloneNode(true);
 
         const name = clone.querySelector('h2');
         const image = clone.querySelector('img');
@@ -39,6 +39,14 @@ selectEl.addEventListener('change', async (event) => {
         p.textContent = 'please select an API';
 
         errorElement.appendChild(p);
+    } else if (selected === 'pokemon') {
+        list.innerHTML = '';
+        errorElement.innerHTML = '';
+
+        await loadPokedex();
+    } else if (selected === 'star-wars') {
+        // do some star wars stuff
+        // TODO write loadStarWars function
     }
 });
 // get user input
