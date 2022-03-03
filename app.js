@@ -4,6 +4,7 @@ import { getPokedex } from './fetch-utils.js';
 const template = document.querySelector('#template');
 const selectEl = document.querySelector('select');
 const list = document.querySelector('#list');
+const errorElement = document.querySelector('#error-message');
 
 async function loadPokedex() {
     const pokedex = await getPokedex();
@@ -29,6 +30,17 @@ async function loadPokedex() {
 }
 
 // set event listeners
+selectEl.addEventListener('change', async (event) => {
+    const selected = event.target.value;
+
+    if (selected === 'none') {
+        const p = document.createElement('p');
+
+        p.textContent = 'please select an API';
+
+        errorElement.appendChild(p);
+    }
+});
 // get user input
 // use user input to update state
 // update DOM to reflect the new state
